@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { User } from 'src/users/entity/user.entity';
+import { User } from 'src/users/entity/users.entity';
 
 const entities = [User];
 
@@ -18,7 +18,6 @@ const entities = [User];
           password: configService.get('DB_PASSWORD'),
           database: configService.get('DB_NAME'),
           entities: entities,
-          synchronize: false,      // 애플리케이션에 작동할 때마다 DB Schema가 자동으로 만들어지게 할 것인가를 설정
         }),
       }),
     ]

@@ -38,5 +38,7 @@ export class User extends BaseEntity {
 
     async validatePassword(password: string): Promise<Boolean> {
         return bcrypt.compare(password, this.password);
+        // this.password = hash화된 password
+        // password = 인자값으로 받아온 '12345678'
     }
 }
