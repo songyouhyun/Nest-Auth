@@ -9,15 +9,22 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @Public()
   @Post()
   createNewUser(@Body() createUserDto: CreateUserDto) {
     return this.usersService.createNewUser(createUserDto);
   }
 
   @Get(':email')
-  show(@Param('email') email: string) {
-    return this.usersService.findByEmail(email);
+  showByEmail(@Param('email') email: string) {
+    return this.usersService.showByEmail(email);
   }
+
+  @Get(':id')
+  showById(@Param('id') id: number) {
+    return this.usersService.showById(id);
+  }
+  
 
   @Delete(':id')
   async delete(@Param('id') id: number) {

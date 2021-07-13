@@ -27,6 +27,13 @@ export class UsersService {
         return await this.usersRepository.findOne({ where: {email: email} });
     }
 
+    async showById(id: number): Promise<User | undefined> {
+        const user = await this.usersRepository.findOne(id);
+        delete user.password;
+
+        return user;
+    }
+
     async findAll(): Promise<User[]> {
         return this.usersRepository.find();
     }
