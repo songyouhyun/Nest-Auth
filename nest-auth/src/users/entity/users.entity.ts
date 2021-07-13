@@ -17,19 +17,11 @@ export class User extends BaseEntity {
     @Column({ unique: true })
     email: string;
 
+    @Column({ unique: true })
+    username: string;
+    
     @Column()
     password: string;
-
-    @Column({ default: true })
-    isActive: boolean;
-
-    @Column()
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @Column()
-    @UpdateDateColumn()
-    updatedAt: Date;
 
     @BeforeInsert()
     async hashPassword() {
