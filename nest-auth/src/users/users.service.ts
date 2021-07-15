@@ -26,7 +26,11 @@ export class UsersService {
     async findByEmail(email: string): Promise<User | undefined> {
         return await this.usersRepository.findOne({ where: {email: email} });
     }
-
+    
+    async findById(id: number): Promise<User | undefined> {
+        return await this.usersRepository.findOne(id);
+    }
+    
     async showById(id: number): Promise<User | undefined> {
         const user = await this.usersRepository.findOne(id);
         delete user.password;
